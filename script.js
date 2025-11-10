@@ -1,4 +1,3 @@
-// Add smooth scrolling for nav links
 document.querySelectorAll('a[href^="#"]').forEach(link => {
     link.addEventListener('click', function(e) {
       e.preventDefault();
