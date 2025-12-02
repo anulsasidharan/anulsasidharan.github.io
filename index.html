@@ -20,6 +20,7 @@
     <h1 class="logo">Anu L Sasidharan</h1>
     <nav>
       <a href="#about">About</a>
+      <a href="#ask-my-ai">Ask My AI</a>
       <a href="#projects">Projects</a>
       <a href="#contact">Contact</a>
     </nav>
@@ -52,6 +53,70 @@
     <p>Today, I’m focusing on <strong>Machine Learning, AI, and Generative AI</strong>, building intelligent platforms that merge data, automation, and creativity. I thrive on turning complex ideas into practical, scalable solutions.</p>
     <p>My mission is to design <strong>AI-native systems</strong> that learn, adapt, and enhance decision-making on their own.</p>
   </section>
+
+  <section id="ask-my-ai" class="project-section scroll-animation">
+  <h2>Ask My AI</h2>
+  <p>
+    This embedded AI assistant lets you explore my skills, experience, and career journey.
+    Feel free to ask questions.
+  </p>
+
+  <div class="iframe-container">
+    <iframe 
+      src="https://anulsasidharan-career-digital-twin.hf.space" 
+      frameborder="0"
+      allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+      allowfullscreen>
+    </iframe>
+  </div>
+  </section>
+
+  <style>
+  .project-section {
+    margin: 80px auto;
+    max-width: 1100px;
+    padding: 0 20px;
+  }
+
+  .project-section h2 {
+    color: #66fcf1;
+    font-size: 2rem;
+    margin-bottom: 10px;
+    text-align: center;
+    letter-spacing: 1px;
+  }
+
+  .project-section p {
+    text-align: center;
+    color: #c5c6c7;
+    font-size: 1rem;
+    max-width: 800px;
+    margin: 0 auto 20px auto;
+  }
+
+  .iframe-container {
+    width: 100%;
+    height: 600px;
+    margin-top: 20px;
+    border-radius: 12px;
+    overflow: hidden;
+    border: 1px solid #45a29e;
+    box-shadow: 0 0 30px rgba(102, 252, 241, 0.3);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+
+  .iframe-container iframe {
+    width: 100%;
+    height: 100%;
+  }
+
+  .iframe-container:hover {
+    transform: scale(1.01);
+    box-shadow: 0 0 40px rgba(102, 252, 241, 0.5);
+  }
+  </style>
+
+
 
   <!-- PROJECTS SECTION -->
   <section id="projects" class="projects">
@@ -138,6 +203,30 @@
   </footer>
 
   <!-- JS -->
+  <script>
+  // Wait until everything is fully loaded
+  window.addEventListener('DOMContentLoaded', () => {
+    // Check if URL has a hash
+    if (window.location.hash) {
+      const hash = window.location.hash;
+
+      // Temporarily scroll to top to avoid jump
+      window.scrollTo(0, 0);
+
+      // Remove hash from URL without affecting history
+      history.replaceState(null, null, ' ');
+
+      // After small delay, scroll smoothly to target section
+      setTimeout(() => {
+        const target = document.querySelector(hash);
+        if (target) {
+          target.scrollIntoView({ behavior: 'smooth' });
+        }
+      }, 50); // 50ms delay ensures DOM has rendered
+    }
+  });
+  </script>
+
   <script src="script.js"></script>
 </body>
 </html>

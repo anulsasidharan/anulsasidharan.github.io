@@ -79,4 +79,7 @@ footer { text-align: center; padding: 20px; color: #c5c6c7; border-top: 1px soli
   .about-section { margin: 80px 15px; padding: 40px 25px; }
   .project-grid { gap: 20px; }
   .social-icons a { font-size: 1.5rem; }
+  .iframe-container {
+    height: 600px;
+  }
 }
