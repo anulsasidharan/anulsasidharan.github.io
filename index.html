@@ -1,232 +1,599 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>Anu L Sasidharan | Portfolio</title>
-  
-  <!-- Google Fonts & FontAwesome -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+
+  <!-- Fonts & Icons -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
-  
-  <!-- CSS -->
-  <link rel="stylesheet" href="style.css" />
+
+  <meta name="description" content="Anu L Sasidharan — ML/AI/GenAI engineer. Big Data background, now building GenAI platforms." />
+
+  <style>
+    :root{
+      --bg: #f8f9fa;
+      --bg-secondary: #ffffff;
+      --panel: #ffffff;
+      --text-primary: #1a1d29;
+      --text-secondary: #4a5568;
+      --text-muted: #718096;
+      --accent: #6366f1;
+      --accent-hover: #4f46e5;
+      --accent-subtle: rgba(99, 102, 241, 0.08);
+      --border: rgba(0,0,0,0.08);
+      --shadow-sm: rgba(0,0,0,0.06);
+      --shadow-md: rgba(0,0,0,0.1);
+      --rounded: 14px;
+      --maxw: 1600px;
+    }
+
+    /* Reset */
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{
+      margin:0;
+      background: linear-gradient(180deg, #f8f9fa 0%, #e9ecef 100%);
+      color:var(--text-secondary);
+      font-family: 'Poppins', system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
+      -webkit-font-smoothing:antialiased;
+      -moz-osx-font-smoothing:grayscale;
+      line-height:1.6;
+    }
+
+    /* Layout */
+    .site {
+      width:100%;
+      max-width:var(--maxw);
+      margin:0 auto;
+      padding:0 28px;
+    }
+
+    /* NAVBAR */
+    header.navbar{
+      position:sticky;
+      top:0;
+      z-index:999;
+      backdrop-filter: blur(12px);
+      background: rgba(248, 249, 250, 0.92);
+      border-bottom: 1px solid var(--border);
+      box-shadow: 0 2px 12px var(--shadow-sm);
+    }
+    .nav-inner{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:20px;
+      max-width:var(--maxw);
+      margin:0 auto;
+      padding:14px 28px;
+    }
+    .logo{
+      color:var(--accent);
+      font-weight:600;
+      letter-spacing:0.6px;
+      font-size:1.05rem;
+    }
+    nav a{
+      color:var(--text-secondary);
+      text-decoration:none;
+      margin-left:18px;
+      font-weight:500;
+      transition: color .2s ease, transform .15s ease;
+    }
+    nav a:hover{ 
+      color:var(--accent-hover); 
+      transform:translateY(-2px); 
+    }
+    nav a.active{ 
+      color:var(--accent); 
+      box-shadow: inset 0 -2px 0 var(--accent); 
+      padding-bottom:2px; 
+    }
+
+    /* HERO */
+    .hero {
+      width:100%;
+      padding:80px 0 60px;
+      background:
+        linear-gradient(180deg, rgba(99, 102, 241, 0.03), transparent),
+        radial-gradient(ellipse at top, var(--accent-subtle), transparent 50%);
+    }
+    .hero-grid{
+      display:grid;
+      grid-template-columns: 420px 1fr;
+      gap:40px;
+      align-items:center;
+      width:100%;
+      max-width:var(--maxw);
+      margin:0 auto;
+      padding:0 28px;
+    }
+    .profile-pic{
+      width:360px;
+      height:360px;
+      border-radius:18px;
+      object-fit:cover;
+      border:2px solid var(--border);
+      box-shadow: 0 12px 40px var(--shadow-md);
+      background:linear-gradient(180deg,#ffffff,#f8f9fa);
+    }
+    .hero-text h1{
+      margin:0 0 10px 0;
+      font-size:2.2rem;
+      color:var(--text-primary);
+      letter-spacing:0.4px;
+    }
+    .hero-text h1 span{ 
+      color:var(--accent); 
+    }
+    .hero-text p{
+      color:var(--text-secondary);
+      margin:12px 0 18px 0;
+      max-width:920px;
+      font-size:1rem;
+    }
+    .hero-ctas{ 
+      display:flex; 
+      gap:12px; 
+      align-items:center; 
+      flex-wrap:wrap; 
+    }
+    .btn{
+      background:var(--accent);
+      color:#ffffff;
+      padding:11px 18px;
+      border-radius:10px;
+      text-decoration:none;
+      font-weight:600;
+      box-shadow: 0 4px 16px rgba(99, 102, 241, 0.25);
+      border:none;
+      cursor:pointer;
+      transition: all .2s ease;
+    }
+    .btn:hover{
+      background:var(--accent-hover);
+      transform:translateY(-2px);
+      box-shadow: 0 6px 20px rgba(99, 102, 241, 0.35);
+    }
+    .btn-outline{
+      background:transparent;
+      border:2px solid var(--border);
+      color:var(--text-primary);
+      padding:10px 17px;
+      border-radius:10px;
+      text-decoration:none;
+      font-weight:600;
+      transition: all .2s ease;
+    }
+    .btn-outline:hover{
+      border-color:var(--accent);
+      color:var(--accent);
+      transform:translateY(-2px);
+      background:var(--accent-subtle);
+    }
+    .social-icons{ 
+      margin-top:12px; 
+      display:flex; 
+      gap:14px; 
+      align-items:center; 
+    }
+    .social-icons a{ 
+      color:var(--text-muted); 
+      font-size:1.15rem; 
+      transition:all .2s ease; 
+    }
+    .social-icons a:hover{ 
+      color:var(--accent); 
+      transform:translateY(-3px); 
+    }
+
+    /* Sections */
+    section{
+      padding:64px 28px;
+      width:100%;
+    }
+    .section-inner{
+      max-width:1400px;
+      margin:0 auto;
+      padding:0 18px;
+    }
+
+    /* About panel */
+    .about-panel{
+      background: var(--panel);
+      border-radius:12px;
+      padding:36px;
+      display:flex;
+      gap:28px;
+      align-items:flex-start;
+      border:1px solid var(--border);
+      box-shadow: 0 8px 32px var(--shadow-sm);
+    }
+    .about-content h2{
+      margin:0 0 10px;
+      color:var(--accent);
+      font-size:1.6rem;
+    }
+    .about-content p{ 
+      color:var(--text-secondary); 
+      margin:10px 0; 
+    }
+    .about-content strong{
+      color:var(--text-primary);
+      font-weight:600;
+    }
+
+    /* Ask My AI section */
+    .project-section { text-align:center; }
+    .project-section h2{ 
+      color:var(--accent); 
+      margin-bottom:8px; 
+      font-size:1.8rem; 
+    }
+    .project-section p{ 
+      color:var(--text-secondary); 
+      max-width:900px; 
+      margin:0 auto 18px; 
+    }
+    #ai-launcher{ margin-top:18px; }
+    .iframe-container{
+      width:100%;
+      height:820px;
+      margin-top:20px;
+      border-radius:12px;
+      overflow:hidden;
+      border: 1px solid var(--border);
+      box-shadow: 0 8px 32px var(--shadow-sm);
+      background: var(--bg-secondary);
+      transition: transform .25s ease, box-shadow .25s ease;
+    }
+    .iframe-container iframe{ 
+      width:100%; 
+      height:100%; 
+      border:0; 
+      display:block; 
+    }
+
+    /* Project grid */
+    .project-grid{
+      display:grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap:20px;
+      margin-top:20px;
+    }
+    .project-card{
+      background: var(--panel);
+      padding:24px;
+      border-radius:12px;
+      border:1px solid var(--border);
+      box-shadow: 0 4px 16px var(--shadow-sm);
+      transition: transform .2s ease, box-shadow .2s ease, border-color .2s ease;
+      text-align:left;
+    }
+    .project-card:hover{ 
+      transform: translateY(-6px); 
+      box-shadow: 0 12px 32px var(--shadow-md);
+      border-color:var(--accent);
+    }
+    .project-card h3{ 
+      color:var(--text-primary); 
+      margin:0 0 8px;
+      font-weight:600;
+    }
+    .project-badges{ 
+      display:flex; 
+      gap:8px; 
+      margin-bottom:12px; 
+      flex-wrap:wrap; 
+    }
+    .project-badges span{
+      background:var(--accent-subtle);
+      padding:6px 10px;
+      border-radius:8px;
+      color:var(--accent);
+      font-size:0.9rem;
+      border:1px solid rgba(99, 102, 241, 0.15);
+      font-weight:500;
+    }
+    .project-card p{
+      color:var(--text-secondary);
+    }
+    .project-links a{ 
+      color:var(--accent); 
+      font-weight:600; 
+      text-decoration:none;
+      transition: color .2s ease;
+    }
+    .project-links a:hover{
+      color:var(--accent-hover);
+    }
+
+    /* Contact */
+    .contact{ text-align:center; }
+    .contact h2{ color:var(--accent); }
+
+    footer{
+      padding:28px;
+      text-align:center;
+      color:var(--text-muted);
+      border-top:1px solid var(--border);
+      margin-top:28px;
+      background:var(--bg-secondary);
+    }
+
+    /* Scroll animation */
+    .scroll-animation{ 
+      opacity:0; 
+      transform: translateY(20px); 
+      transition: all .7s cubic-bezier(.2,.9,.2,1); 
+    }
+    .scroll-animation.active{ 
+      opacity:1; 
+      transform: translateY(0); 
+    }
+
+    /* Section headers */
+    h2{
+      color:var(--accent);
+      margin-bottom:6px;
+    }
+
+    /* Responsive */
+    @media (max-width: 1080px){
+      .hero-grid{ 
+        grid-template-columns: 1fr; 
+        gap:28px; 
+        padding-bottom:8px; 
+      }
+      .profile-pic{ 
+        width:260px; 
+        height:260px; 
+        margin:0 auto; 
+        border-radius:12px; 
+      }
+      .hero-text h1{ 
+        font-size:1.6rem; 
+        text-align:center; 
+      }
+      .hero-text p{ 
+        text-align:center; 
+      }
+    }
+    @media (max-width: 640px){
+      .iframe-container{ height:620px; }
+      .project-section h2{ font-size:1.4rem; }
+      .nav-inner{ padding:10px 16px; }
+      nav a{ margin-left:10px; font-size:0.95rem; }
+    }
+  </style>
 </head>
 <body>
 
+  <!-- NAVBAR -->
   <header class="navbar">
-    <h1 class="logo">Anu L Sasidharan</h1>
-    <nav>
-      <a href="#about">About</a>
-      <a href="#ask-my-ai">Ask My AI</a>
-      <a href="#projects">Projects</a>
-      <a href="#contact">Contact</a>
-    </nav>
+    <div class="nav-inner">
+      <div class="logo">Anu L Sasidharan</div>
+      <nav>
+        <a href="#about" class="nav-link">About</a>
+        <a href="#ask-my-ai" class="nav-link">Ask My AI</a>
+        <a href="#projects" class="nav-link">Projects</a>
+        <a href="#contact" class="nav-link">Contact</a>
+      </nav>
+    </div>
   </header>
 
-  <section class="hero">
-    <div class="hero-content">
-      <img src="images/profile.jpg" alt="Anu Sasidharan" class="profile-pic" />
-      <div class="hero-text">
-        <h2>Hi, I'm <span>Anu L Sasidharan</span> 👋</h2>
-        <p>ML/AI/GenAI Engineer | LLMs, Prompt Engineering, RAG Specialist | LangChain, OpenAI API, HuggingFace Expert | VectorDB, Model Optimization | Building Innovative AI Solutions</p>
-        <div class="hero-buttons">
-          <a href="#projects" class="btn">View My Work</a>
-          <a href="resume.pdf" class="btn-outline" target="_blank">Download Resume</a>
+  <main>
+
+    <!-- HERO -->
+    <section class="hero">
+      <div class="hero-grid site">
+        <div style="display:flex;flex-direction:column;gap:16px;">
+          <img src="images/profile.jpg" alt="Anu L Sasidharan" class="profile-pic" />
+          <div style="display:flex;gap:12px;align-items:center;">
+            <a class="btn" href="#projects">View My Work</a>
+            <a class="btn-outline" href="resume.pdf" target="_blank">Download Resume</a>
+          </div>
         </div>
-        <div class="social-icons">
-          <a href="https://github.com/anulsasidharan" target="_blank"><i class="fab fa-github"></i></a>
-          <a href="https://linkedin.com/in/anulsasidharan" target="_blank"><i class="fab fa-linkedin"></i></a>
-          <a href="mailto:anulsasidharan@gmail.com" title="Email"><i class="fas fa-envelope"></i></a>
-        </div>
-      </div>
-    </div>
-  </section>
 
-  <!-- ABOUT SECTION -->
-  <section id="about" class="about-section scroll-animation">
-    <h2>About Me</h2>
-    <p>Hi, I'm <strong>Anu L. Sasidharan</strong> — a Big Data and GenAI professional based in Canada with over 13 years of experience in Hadoop ecosystem administration, cloud data platforms, and large-scale analytics.</p>
-    <p>My journey began in <strong>Hadoop, Spark, and data engineering</strong>, architecting and optimizing multi-tenant clusters and building secure, high-performance data systems. Over the years, I’ve worked across <strong>AWS, Azure, and GCP</strong>, delivering enterprise-grade data pipelines.</p>
-    <p>Today, I’m focusing on <strong>Machine Learning, AI, and Generative AI</strong>, building intelligent platforms that merge data, automation, and creativity. I thrive on turning complex ideas into practical, scalable solutions.</p>
-    <p>My mission is to design <strong>AI-native systems</strong> that learn, adapt, and enhance decision-making on their own.</p>
-  </section>
-
-  <section id="ask-my-ai" class="project-section scroll-animation">
-  <h2>Ask My AI</h2>
-  <p>
-    This embedded AI assistant lets you explore my skills, experience, and career journey.
-    Feel free to ask questions.
-  </p>
-
-  <div class="iframe-container">
-    <iframe 
-      src="https://anulsasidharan-career-digital-twin.hf.space" 
-      frameborder="0"
-      allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
-      allowfullscreen>
-    </iframe>
-  </div>
-  </section>
-
-  <style>
-  .project-section {
-    margin: 80px auto;
-    max-width: 1100px;
-    padding: 0 20px;
-  }
-
-  .project-section h2 {
-    color: #66fcf1;
-    font-size: 2rem;
-    margin-bottom: 10px;
-    text-align: center;
-    letter-spacing: 1px;
-  }
-
-  .project-section p {
-    text-align: center;
-    color: #c5c6c7;
-    font-size: 1rem;
-    max-width: 800px;
-    margin: 0 auto 20px auto;
-  }
-
-  .iframe-container {
-    width: 100%;
-    height: 600px;
-    margin-top: 20px;
-    border-radius: 12px;
-    overflow: hidden;
-    border: 1px solid #45a29e;
-    box-shadow: 0 0 30px rgba(102, 252, 241, 0.3);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-  }
-
-  .iframe-container iframe {
-    width: 100%;
-    height: 100%;
-  }
-
-  .iframe-container:hover {
-    transform: scale(1.01);
-    box-shadow: 0 0 40px rgba(102, 252, 241, 0.5);
-  }
-  </style>
-
-
-
-  <!-- PROJECTS SECTION -->
-  <section id="projects" class="projects">
-    <h2>Featured Projects</h2>
-    <div class="project-grid">
-      <div class="project-card scroll-animation">
-        <h3>Nutri-GPT</h3>
-        <div class="project-badges">
-          <span>Python</span><span>Streamlit</span><span>OpenAI API</span><span>Computer Vision</span>
-        </div>
-        <p>AI-powered web app that identifies food items from images and provides calorie and nutrition insights. Modular design enables easy extension for diet tracking or wellness applications.</p>
-        <div class="project-links">
-          <a href="https://github.com/anulsasidharan/nutri-gpt" target="_blank">GitHub →</a>
+        <div class="hero-text">
+          <h1>Hi, I'm <span>Anu L Sasidharan</span></h1>
+          <p>ML/AI/GenAI Engineer | LLMs, Prompt Engineering, RAG Specialist | LangChain, OpenAI API, HuggingFace Expert | VectorDB, Model Optimization. Building practical GenAI platforms from a Big Data foundation.</p>
+          <div class="social-icons" aria-hidden="false" role="navigation">
+            <a href="https://github.com/anulsasidharan" target="_blank" aria-label="GitHub"><i class="fab fa-github"></i></a>
+            <a href="https://linkedin.com/in/anulsasidharan" target="_blank" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+            <a href="mailto:anulsasidharan@gmail.com" aria-label="Email"><i class="fas fa-envelope"></i></a>
+          </div>
         </div>
       </div>
-      <!-- Repeat other project cards with scroll-animation class -->
+    </section>
 
-      <div class="project-card scroll-animation">
-        <h3>MCP-InsightEngine</h3>
-        <div class="project-badges">
-          <span>Python</span><span>Analytics</span><span>DevOps</span>
-        </div>
-        <p>Python-based analytics engine to parse, process, and visualize operational data. Supports server and script modes for DevOps or operations monitoring workflows.</p>
-        <div class="project-links">
-          <a href="https://github.com/anulsasidharan/MCP-InsightEngine" target="_blank">GitHub →</a>
-        </div>
-      </div>
-  
-      <div class="project-card scroll-animation">
-        <h3>RAG-Document-Search</h3>
-        <div class="project-badges">
-          <span>Python</span><span>RAG</span><span>LangChain</span>
-        </div>
-        <p>Framework to ingest documents, build semantic embeddings, retrieve relevant content, and generate grounded AI responses—ideal for enterprise document search.</p>
-        <div class="project-links">
-          <a href="https://github.com/anulsasidharan/RAG-Document-Search" target="_blank">GitHub →</a>
+    <!-- ABOUT -->
+    <section id="about" class="site">
+      <div class="section-inner about-panel scroll-animation">
+        <div style="flex:1">
+          <div class="about-content">
+            <h2>About Me</h2>
+            <p>Hi, I'm <strong>Anu L. Sasidharan</strong> — a Big Data and GenAI professional based in Canada with 13+ years of experience designing, securing, and operating large-scale data platforms across <strong>Hadoop, cloud (AWS/Azure/GCP)</strong>, and analytics ecosystems.</p>
+            <p>My career began with building and operating multi-tenant Hadoop clusters, optimizing performance, and enforcing <strong>enterprise-grade security.</strong> Over time, I transitioned to <strong>Machine Learning and Generative AI</strong> — combining engineering rigor with <strong>model-driven intelligence</strong>.</p>
+            <p>Today I focus on building AI-native systems: <strong>data pipelines, reliable model infra, RAG & retrieval systems, and practical GenAI solutions</strong> that create real business value.</p>
+            <p>My goal is to bridge <strong>reliable data infrastructure with scalable AI platforms</strong> that teams can trust and build upon.</p>
+          </div>
         </div>
       </div>
-  
-      <div class="project-card scroll-animation">
-        <h3>NeoGraphAI</h3>
-        <div class="project-badges">
-          <span>Python</span><span>Knowledge Graphs</span><span>Generative AI</span>
-        </div>
-        <p>Merge knowledge graphs with generative AI workflows. Enables ingestion of structured/unstructured data, graph-centric representation, and context-aware prompt retrieval.</p>
-        <div class="project-links">
-          <a href="https://github.com/anulsasidharan/NeoGraphAI" target="_blank">GitHub →</a>
-        </div>
-      </div>
-  
-      <div class="project-card scroll-animation">
-        <h3>LLM-Based-Semantic-Recommender</h3>
-        <div class="project-badges">
-          <span>Python</span><span>LLM</span><span>VectorDB</span><span>MLOps</span>
-        </div>
-        <p>Scalable recommendation engine leveraging LLMs for semantic embeddings. Modular pipeline, containerized deployment, and MLOps best practices for personalization scenarios.</p>
-        <div class="project-links">
-          <a href="https://github.com/anulsasidharan/LLM-Based-Semantic-Recommender" target="_blank">GitHub →</a>
-        </div>
-      </div>
-  
-      <div class="project-card scroll-animation">
-        <h3>E-commerce-Recommendation-System</h3>
-        <div class="project-badges">
-          <span>Python</span><span>Scikit-learn</span><span>Streamlit</span>
-        </div>
-        <p>End-to-End Book Recommender System using content-based and collaborative filtering techniques. Provides personalized recommendations with a user-friendly web interface.</p>
-        <div class="project-links">
-          <a href="https://github.com/anulsasidharan/E-commerce-Recommendation-System" target="_blank">GitHub →</a>
-        </div>
-      </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- CONTACT SECTION -->
-  <section id="contact" class="contact scroll-animation">
-    <h2>Get in Touch</h2>
-    <p>Open to collaborations, consulting, or interesting AI projects. Let’s connect!</p>
-    <a href="mailto:anulsasidharan@gmail.com" class="btn">Email Me</a>
-  </section>
+    <!-- ASK MY AI -->
+    <section id="ask-my-ai" class="project-section site scroll-animation">
+      <div class="section-inner">
+        <h2>Ask My AI</h2>
+        <p>Explore my skills, experience, and career journey. Click below to open the AI assistant — it runs inside this page so you can ask questions without leaving my portfolio.</p>
+
+        <div id="ai-launcher">
+          <button id="load-ai" class="btn" aria-controls="ai-iframe-container" aria-expanded="false">Launch AI Chat</button>
+        </div>
+
+        <div class="iframe-container" id="ai-iframe-container" style="display:none;">
+          <!-- iframe injected dynamically -->
+        </div>
+      </div>
+    </section>
+
+    <!-- PROJECTS -->
+    <section id="projects" class="site">
+      <div class="section-inner">
+        <h2>Featured Projects</h2>
+        <p style="color:var(--text-secondary); max-width:1100px; margin:0 0 18px;">Selected work bridging Big Data, MLOps and GenAI — repositories and live demos are linked.</p>
+
+        <div class="project-grid">
+          <div class="project-card scroll-animation">
+            <h3>Nutri-GPT</h3>
+            <div class="project-badges"><span>Python</span><span>Streamlit</span><span>OpenAI API</span><span>CV</span></div>
+            <p>AI web app that identifies food items and provides calorie & nutrition details. Built modularly for quick extension into diet-tracking workflows.</p>
+            <div class="project-links"><a href="https://github.com/anulsasidharan/nutri-gpt" target="_blank">GitHub →</a></div>
+          </div>
+
+          <div class="project-card scroll-animation">
+            <h3>RAG-Document-Search</h3>
+            <div class="project-badges"><span>Python</span><span>RAG</span><span>LangChain</span></div>
+            <p>Document ingestion + semantic retrieval + grounding pipelines for enterprise document search and QA workflows.</p>
+            <div class="project-links"><a href="https://github.com/anulsasidharan/RAG-Document-Search" target="_blank">GitHub →</a></div>
+          </div>
+
+          <div class="project-card scroll-animation">
+            <h3>NeoGraphAI</h3>
+            <div class="project-badges"><span>Python</span><span>Knowledge Graph</span><span>GenAI</span></div>
+            <p>Combines knowledge graphs and generative models for context-aware retrieval and structured reasoning.</p>
+            <div class="project-links"><a href="https://github.com/anulsasidharan/NeoGraphAI" target="_blank">GitHub →</a></div>
+          </div>
+
+          <div class="project-card scroll-animation">
+            <h3>LLM Semantic Recommender</h3>
+            <div class="project-badges"><span>Python</span><span>VectorDB</span><span>MLOps</span></div>
+            <p>Scalable recommendation engine leveraging semantic embeddings for personalized suggestions.</p>
+            <div class="project-links"><a href="https://github.com/anulsasidharan/LLM-Based-Semantic-Recommender" target="_blank">GitHub →</a></div>
+          </div>
+
+          <div class="project-card scroll-animation">
+            <h3>MCP-InsightEngine</h3>
+            <div class="project-badges"><span>Python</span><span>VectorDB</span><span>MLOps</span><span>MCP</span></div>
+            <p>Python-based analytics engine to parse, process, and visualize operational data. Supports server and script modes for DevOps or operations monitoring workflows</p>
+            <div class="project-links"><a href="https://github.com/anulsasidharan/MCP-InsightEngine" target="_blank">GitHub →</a></div>
+          </div>
+
+          <div class="project-card scroll-animation">
+            <h3>E-commerce-Recommendation-System</h3>
+            <div class="project-badges"><span>Python</span><span>Scikit-learn</span><span>MLOps</span><span>Streamlit</span></div>
+            <p>End-to-End Book Recommender System using content-based and collaborative filtering techniques. Provides personalized recommendations with a user-friendly web interface.</p>
+            <div class="project-links"><a href="https://github.com/anulsasidharan/E-commerce-Recommendation-System" target="_blank">GitHub →</a></div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section id="contact" class="site scroll-animation">
+      <div class="section-inner" style="text-align:center;">
+        <h2>Get in Touch</h2>
+        <p style="color:var(--text-secondary); max-width:900px; margin:0 auto 18px;">Open to collaborations, consulting, or interesting AI projects. Let's build something meaningful.</p>
+        <a href="mailto:anulsasidharan@gmail.com" class="btn">Email Me</a>
+      </div>
+    </section>
+
+  </main>
 
   <footer>
-    <p>© 2025 Anu L. Sasidharan | Built with 💙 on GitHub Pages</p>
+    <div class="site">
+      <small>© 2025 Anu L. Sasidharan | Built with 💙 on GitHub Pages</small>
+    </div>
   </footer>
 
-  <!-- JS -->
+  <!-- SCRIPTS -->
   <script>
-  // Wait until everything is fully loaded
-  window.addEventListener('DOMContentLoaded', () => {
-    // Check if URL has a hash
-    if (window.location.hash) {
-      const hash = window.location.hash;
+    /********** Scroll-triggered animations **********/
+    const scrollElements = document.querySelectorAll(".scroll-animation");
 
-      // Temporarily scroll to top to avoid jump
-      window.scrollTo(0, 0);
+    const elementInView = (el, offset = 0) => {
+      const elementTop = el.getBoundingClientRect().top;
+      return elementTop <= (window.innerHeight || document.documentElement.clientHeight) - offset;
+    };
 
-      // Remove hash from URL without affecting history
-      history.replaceState(null, null, ' ');
+    const displayScrollElement = (element) => {
+      element.classList.add("active");
+    };
 
-      // After small delay, scroll smoothly to target section
-      setTimeout(() => {
-        const target = document.querySelector(hash);
-        if (target) {
-          target.scrollIntoView({ behavior: 'smooth' });
+    const handleScrollAnimation = () => {
+      scrollElements.forEach(el => {
+        if (elementInView(el, 100)) {
+          displayScrollElement(el);
         }
-      }, 50); // 50ms delay ensures DOM has rendered
-    }
-  });
-  </script>
+      });
+    };
 
-  <script src="script.js"></script>
+    window.addEventListener("scroll", handleScrollAnimation);
+    window.addEventListener("load", handleScrollAnimation);
+
+    /********** Dynamic load for AI iframe **********/
+    const loadAiButton = document.getElementById('load-ai');
+    const aiContainer = document.getElementById('ai-iframe-container');
+
+    if (loadAiButton) {
+      loadAiButton.addEventListener('click', () => {
+        const iframe = document.createElement('iframe');
+        iframe.src = "https://anulsasidharan-career-digital-twin.hf.space";
+        iframe.allow = "accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture; fullscreen";
+        iframe.loading = "lazy";
+        iframe.setAttribute('title','Ask My AI — Career Digital Twin');
+        aiContainer.appendChild(iframe);
+
+        aiContainer.style.display = 'block';
+        loadAiButton.setAttribute('aria-expanded','true');
+        setTimeout(() => {
+          aiContainer.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }, 70);
+
+        const launcher = document.getElementById('ai-launcher');
+        if (launcher) launcher.style.display = 'none';
+      });
+    }
+
+    /********** Prevent hash-jump on load **********/
+    window.addEventListener('DOMContentLoaded', () => {
+      if (window.location.hash) {
+        const hash = window.location.hash;
+        window.scrollTo(0, 0);
+        history.replaceState(null, null, ' ');
+        setTimeout(() => {
+          const target = document.querySelector(hash);
+          if (target) target.scrollIntoView({ behavior: 'smooth' });
+        }, 120);
+      }
+    });
+
+    /********** Navbar active link highlighting **********/
+    const navLinks = document.querySelectorAll('nav a.nav-link');
+    const sections = Array.from(navLinks).map(link => {
+      const id = link.getAttribute('href').replace('#','');
+      return document.getElementById(id);
+    });
+
+    const setActiveNav = () => {
+      let index = sections.findIndex(sec => sec && sec.getBoundingClientRect().top > 120);
+      if (index === -1) index = sections.length;
+      const activeIdx = Math.max(0, Math.min(sections.length - 1, (index === sections.length ? sections.length - 1 : index - 1)));
+      navLinks.forEach((a, i) => {
+        if (i === activeIdx) a.classList.add('active'); else a.classList.remove('active');
+      });
+    };
+
+    window.addEventListener('scroll', setActiveNav);
+    window.addEventListener('load', setActiveNav);
+    window.addEventListener('resize', setActiveNav);
+
+  </script>
 </body>
 </html>
